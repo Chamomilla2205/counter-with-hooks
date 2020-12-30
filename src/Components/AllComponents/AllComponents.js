@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 
 export default function App() {
+
     const [count, setCount] = useState(0);
     const [inputValue,setInputValue] = useState()
+
     const onClickChange = (num) =>  {
         let result = count + num;
         if (result < 0) {
@@ -10,23 +12,26 @@ export default function App() {
         } else {
             setCount(result)
         }
-        setCount(result)
     }
 
-    const onChange = (ev) => {
-        setInputValue(+ev.target.value)
+    const onChange = ({target:{value}}) => {
+        setInputValue(value)
         console.log(inputValue)
     }
-    const onSubmit = (ev) => {
+
+    const onSubmit = () => {
+
         let result = count+inputValue;
         if (result < 0) {
             setCount(result=0)
         } else {
             setCount(result)
         }
-        setCount(result)
-        setCount(result)
+        // не многовато сетКаунтов?
+        // setCount(result)
+        // setCount(result)
     }
+
     return (
         <div className={'wrap'}>
             <button onClick={()=>{onClickChange(1)}}>1</button>
@@ -39,6 +44,7 @@ export default function App() {
             </form>
             <button onClick={onSubmit}>Submit</button>
             <div>Counter value: {count}</div>
+            {/*лишний тег под*/}
             <div></div>
         </div>
     )
