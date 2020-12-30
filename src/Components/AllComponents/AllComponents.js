@@ -1,9 +1,13 @@
 import React, {useState} from "react";
+import Buttons from "../Buttons/Buttons";
+import Input from "../Input/Input";
+import Result from "../Result/Result";
 
 export default function App() {
 
     const [count, setCount] = useState(0);
     const [inputValue,setInputValue] = useState()
+    const array = [1,-1,100,-100,500]
 
     const onClickChange = (num) =>  {
         let result = count + num;
@@ -12,16 +16,14 @@ export default function App() {
         } else {
             setCount(result)
         }
+        setCount(result)
     }
 
-    const onChange = ({target:{value}}) => {
-        setInputValue(value)
-        console.log(inputValue)
+    const onChange = (inputValue) => {
+        setInputValue(inputValue)
     }
-
     const onSubmit = () => {
-
-        let result = count+inputValue;
+        let result = count+ +inputValue;
         if (result < 0) {
             setCount(result=0)
         } else {
@@ -34,15 +36,11 @@ export default function App() {
 
     return (
         <div className={'wrap'}>
-            <button onClick={()=>{onClickChange(1)}}>1</button>
-            <button onClick={()=>{onClickChange(-1)}}>-1</button>
-            <button onClick={()=>{onClickChange(100)}}>100</button>
-            <button onClick={()=>{onClickChange(-100)}}>-100</button>
-            <button onClick={()=>{onClickChange(-count)}}>Reset</button>
-            <form action="" id={'form'} name={'form'}>
-                <input type="number" name={'numbers'} onChange={onChange} value={inputValue}/>
-            </form>
+            <Buttons onClickChange = {onClickChange} count = {count} array = {array}/>
+            <button onClick={() => onClickChange(-count)}>RESET</button>
+            <Input onChange={onChange} value={inputValue}/>
             <button onClick={onSubmit}>Submit</button>
+            <Result count = {count}/>
             <div>Counter value: {count}</div>
             {/*лишний тег под*/}
             <div></div>
