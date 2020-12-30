@@ -1,4 +1,4 @@
-// многое не икористовується
+// todo многое не икористовується
 import React, {Component,
     // useState,
     // seEffect,
