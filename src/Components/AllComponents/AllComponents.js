@@ -32,6 +32,7 @@ export default function App() {
             setCount(result)
         }
         // todo у цьому методы помилка знайди
+
         setCount(result)
         setCount(result)
     }
